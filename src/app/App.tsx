@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
 import {
-  ShoppingBag, Heart, Search, Menu, X, Star, ArrowRight,
+  ShoppingBag, Heart, Search, Menu, X, ArrowRight,
   Plus, Trash2, Edit, Eye, Package, Users, ShoppingCart,
   BarChart2, LogOut, Mail, MapPin, Check, Bell,
-  TrendingUp, Award, Image, Tag, Clock, Gem, Watch,
+  TrendingUp, Image, Tag, Clock, Gem, Watch,
   Layers, Sparkles, Crown, ChevronDown,
 } from "lucide-react";
 
@@ -12,7 +12,7 @@ import {
 
 type AdminSection =
   | "overview" | "products" | "orders" | "customers"
-  | "banners" | "collections" | "testimonials" | "offers" | "coming-soon";
+  | "banners" | "collections" | "offers" | "coming-soon";
 
 interface Product {
   id: string;
@@ -23,16 +23,6 @@ interface Product {
   image: string;
   badge?: string;
   inStock: boolean;
-}
-
-interface Testimonial {
-  id: string;
-  name: string;
-  location: string;
-  rating: number;
-  text: string;
-  avatar: string;
-  product: string;
 }
 
 interface Order {
@@ -96,35 +86,7 @@ const PRODUCTS: Product[] = [
   },
 ];
 
-const TESTIMONIALS: Testimonial[] = [
-  {
-    id: "t1",
-    name: "Priya Sharma",
-    location: "Mumbai",
-    rating: 5,
-    text: "I've owned bags from Coach and Michael Kors — VELLA rivals them both. The leather is impeccable. Soft, structured, and absolutely stunning. I receive compliments every single day.",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&auto=format",
-    product: "Signature Tote — Mocha Brown",
-  },
-  {
-    id: "t2",
-    name: "Ananya Verma",
-    location: "Delhi",
-    rating: 5,
-    text: "The unboxing alone felt like a luxury experience. My Ivory White tote is even more beautiful in person — it pairs with everything and feels genuinely high-end in a way most brands fail to achieve.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&auto=format",
-    product: "Signature Tote — Ivory White",
-  },
-  {
-    id: "t3",
-    name: "Kavya Nair",
-    location: "Bangalore",
-    rating: 5,
-    text: "This is exactly the bag I had been searching for. Not too flashy, not too understated — perfect quiet luxury. The hardware feels weighty and premium. VELLA truly understands modern women.",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&auto=format",
-    product: "Signature Tote — Midnight Black",
-  },
-];
+// Removed Testimonials as per brand realignment
 
 const ORDERS: Order[] = [
   { id: "#VL-0091", customer: "Priya Sharma", product: "Signature Tote — Mocha Brown", amount: 34500, status: "delivered", date: "2024-12-14" },
@@ -158,7 +120,7 @@ const COMING_SOON_CATEGORIES = [
     image: "https://images.unsplash.com/photo-1591352254932-6d56d9fe295b?w=400&h=500&fit=crop&auto=format",
   },
   {
-    name: "Leather Goods",
+    name: "Fine Accessories",
     label: "Accessories",
     Icon: Tag,
     image: "https://images.unsplash.com/photo-1628483211662-9bcc692c46dc?w=400&h=500&fit=crop&auto=format",
@@ -185,7 +147,7 @@ const INSTAGRAM_PHOTOS = [
 const fmtPrice = (n: number) =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(n);
 
-const F = { display: "'Playfair Display', Georgia, serif" as const };
+const F = { fontFamily: "'Playfair Display', Georgia, serif" as const };
 const R = { fontFamily: "'Raleway', system-ui, sans-serif" as const };
 const D = { fontFamily: "'DM Sans', system-ui, sans-serif" as const };
 
@@ -280,7 +242,7 @@ function Navbar({
           className={`text-2xl md:text-[28px] tracking-[0.4em] font-normal transition-colors duration-300 ${textColor}`}
           style={F}
         >
-          VELLA
+          GRATIVA
         </a>
 
         {/* Right Icons */}
@@ -336,7 +298,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             className="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-[#1A1714] z-[70] flex flex-col"
           >
             <div className="flex items-center justify-between px-8 py-6 border-b border-white/8">
-              <span className="text-2xl tracking-[0.3em] text-white" style={F}>VELLA</span>
+              <span className="text-2xl tracking-[0.3em] text-white" style={F}>GRATIVA</span>
               <button onClick={onClose} className="text-white/60 hover:text-[#C9A96E] transition-colors">
                 <X size={20} strokeWidth={1.5} />
               </button>
@@ -518,7 +480,7 @@ function QuickView({
         <div className="w-full md:w-[45%] bg-[#EDE6DA] overflow-hidden aspect-[3/4] md:aspect-auto">
           <img
             src={product.image}
-            alt={`VELLA ${product.name} in ${product.color}`}
+            alt={`GRATIVA ${product.name} in ${product.color}`}
             className="w-full h-full object-cover"
           />
         </div>
@@ -543,11 +505,11 @@ function QuickView({
           <p className="text-2xl text-[#1A1714] mb-6" style={F}>{fmtPrice(product.price)}</p>
 
           <p className="text-sm text-[#8C7E6E] leading-relaxed mb-2" style={{ ...D, fontWeight: 300 }}>
-            Handcrafted from the finest full-grain leather, The Signature Tote is designed for women who move with intention. Spacious, structured, and endlessly refined.
+            Handcrafted with meticulous detail, The Signature Tote is designed for women who move with intention. Spacious, structured, and endlessly refined.
           </p>
 
           <ul className="mt-4 space-y-2 mb-8">
-            {["Full-grain leather", "Gold-toned hardware", "Suede-lined interior", "Dust bag included"].map((feat) => (
+            {["Designed in India", "Aspirational silhouette", "Suede-lined interior", "Dust bag included"].map((feat) => (
               <li key={feat} className="flex items-center gap-2 text-xs text-[#8C7E6E]" style={D}>
                 <Check size={11} strokeWidth={2.5} className="text-[#C9A96E]" />
                 {feat}
@@ -610,7 +572,7 @@ function ProductCard({
       <div className="relative overflow-hidden bg-[#EDE6DA] aspect-[3/4]">
         <img
           src={product.image}
-          alt={`VELLA ${product.name} — ${product.color}`}
+          alt={`GRATIVA ${product.name} — ${product.color}`}
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
@@ -682,7 +644,7 @@ function HeroSection({ onDiscover }: { onDiscover: () => void }) {
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1779398968962-b3ad149b57b6?w=1920&h=1080&fit=crop&auto=format"
-          alt="VELLA luxury fashion campaign — two elegant women in black"
+          alt="GRATIVA luxury fashion campaign — two elegant women in black"
           className="w-full h-full object-cover scale-105"
           style={{ animation: "heroZoom 12s ease-out forwards" }}
         />
@@ -774,7 +736,7 @@ function CollectionSection({
         <Label>Signature Collection</Label>
         <h2 className="text-[clamp(2rem,4vw,3.5rem)] text-[#1A1714]" style={F}>The Signature Tote</h2>
         <p className="mt-5 text-[#8C7E6E] text-sm max-w-sm mx-auto leading-[1.85]" style={{ ...D, fontWeight: 300 }}>
-          One iconic silhouette. Four expressions of quiet luxury. Each handcrafted from full-grain leather.
+          One iconic silhouette. Four expressions of quiet luxury. Handcrafted to elevate your everyday presence.
         </p>
       </FadeIn>
 
@@ -811,7 +773,7 @@ function BrandStorySection() {
               <div className="aspect-[4/5] overflow-hidden bg-[#2A2420]">
                 <img
                   src="https://images.unsplash.com/photo-1779405949264-a44d50a14315?w=800&h=1000&fit=crop&auto=format"
-                  alt="VELLA brand story — editorial fashion portrait"
+                  alt="GRATIVA brand story — editorial fashion portrait"
                   className="w-full h-full object-cover opacity-85 hover:opacity-95 transition-opacity duration-700"
                 />
               </div>
@@ -823,24 +785,24 @@ function BrandStorySection() {
           <FadeIn delay={0.15}>
             <Label>Our Story</Label>
             <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-normal leading-[1.1] mb-8 text-white" style={F}>
-              The Beginning<br />
-              <em>of VELLA</em>
+              The World<br />
+              <em>of GRATIVA</em>
             </h2>
             <div className="space-y-5 text-white/60 leading-[1.9]" style={{ ...D, fontWeight: 300, fontSize: "0.9rem" }}>
               <p>
-                VELLA was born from a singular belief: that luxury should not be a privilege reserved for the few, but an experience accessible to any woman who values true quality.
+                GRATIVA was born from a singular belief: that luxury should not be a privilege reserved for the few, but an experience accessible to any woman who values true quality.
               </p>
               <p>
                 We set out to create something different — handbags that carry the DNA of the world's finest fashion houses, without the barriers that have long defined the industry.
               </p>
               <p>
-                Every stitch, every piece of hardware, every fold of leather is a deliberate act of craft. VELLA is not just a bag. It is a statement of who you are.
+                Every detail, every silhouette, every finish is a deliberate act of design. GRATIVA is not just an accessory. It is a statement of elegance and presence.
               </p>
             </div>
             <div className="mt-12 flex items-center gap-10">
               {[
                 { stat: "2024", label: "Founded" },
-                { stat: "100%", label: "Full-Grain Leather" },
+                { stat: "Limited", label: "Editions" },
                 { stat: "India", label: "Crafted Here" },
               ].map((s, i) => (
                 <div key={s.label} className="flex items-center gap-10">
@@ -859,50 +821,82 @@ function BrandStorySection() {
   );
 }
 
-// ─── CRAFTSMANSHIP ────────────────────────────────────────────────────────────
+// ─── THE GRATIVA DIFFERENCE ──────────────────────────────────────────────────
 
-function CraftsmanshipSection() {
-  const crafts = [
+function GrativaDifferenceSection() {
+  const features = [
     {
-      label: "Premium Leather",
-      desc: "Full-grain leather selected for natural character and exceptional durability.",
-      image: "https://images.unsplash.com/photo-1571829604981-ea159f94e5ad?w=600&h=700&fit=crop&auto=format",
+      title: "Curated Designs",
+      desc: "Every piece is carefully selected to reflect modern luxury and effortless sophistication.",
+      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=800&fit=crop&auto=format",
     },
     {
-      label: "Precision Stitching",
-      desc: "Each seam hand-stitched with waxed thread by experienced artisans.",
-      image: "https://images.unsplash.com/photo-1628483211662-9bcc692c46dc?w=600&h=700&fit=crop&auto=format",
+      title: "Limited Drops",
+      desc: "Exclusive collections released in limited quantities to maintain uniqueness and desirability.",
+      image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=800&fit=crop&auto=format",
     },
     {
-      label: "Luxury Hardware",
-      desc: "Gold-toned zinc alloy fittings, resistant to tarnish and built to endure.",
-      image: "https://images.unsplash.com/photo-1573227896778-8f378c4029d4?w=600&h=700&fit=crop&auto=format",
+      title: "Premium Finish",
+      desc: "Attention to detail, refined aesthetics, and elevated presentation in every product.",
+      image: "https://images.unsplash.com/photo-1509319117193-57bab727e09d?w=600&h=800&fit=crop&auto=format",
+    },
+    {
+      title: "Modern Elegance",
+      desc: "Contemporary fashion designed to complement the lifestyle of today's confident women.",
+      image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&h=800&fit=crop&auto=format",
     },
   ];
 
   return (
-    <section className="py-24 md:py-32 px-6 lg:px-10 max-w-[1400px] mx-auto">
-      <FadeIn className="text-center mb-16">
-        <Label>The Craft</Label>
-        <h2 className="text-[clamp(2rem,4vw,3.5rem)] text-[#1A1714]" style={F}>Precision In Every Detail</h2>
-      </FadeIn>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-        {crafts.map((c, i) => (
-          <FadeIn key={c.label} delay={i * 0.12}>
-            <div className="group relative overflow-hidden aspect-[4/5] bg-[#EDE6DA]">
-              <img
-                src={c.image}
-                alt={`VELLA craftsmanship — ${c.label}`}
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-75 group-hover:opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1714]/80 via-[#1A1714]/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-400">
-                <p className="text-[9px] tracking-[0.35em] uppercase text-[#C9A96E] mb-2.5" style={R}>{c.label}</p>
-                <p className="text-white/80 text-sm leading-[1.7]" style={{ ...D, fontWeight: 300 }}>{c.desc}</p>
+    <section className="py-28 md:py-36 bg-[#FAF8F4] overflow-hidden border-t border-black/5">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <FadeIn className="text-center mb-20">
+          <Label>The GRATIVA Standard</Label>
+          <h2 className="text-[clamp(2.25rem,4.5vw,3.75rem)] text-[#1A1714] font-normal tracking-wide mb-6" style={F}>
+            THE GRATIVA DIFFERENCE
+          </h2>
+          <p className="text-sm md:text-base text-[#8C7E6E] max-w-xl mx-auto leading-[1.8] font-light" style={{ ...D, fontWeight: 300 }}>
+            Designed for women who appreciate elegance, confidence, and timeless style.
+          </p>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          {features.map((feat, i) => (
+            <FadeIn key={feat.title} delay={i * 0.12}>
+              <div className="group flex flex-col h-full bg-[#FAF8F4] transition-all duration-500 ease-out">
+                {/* Image Container with Elegant Zoom */}
+                <div className="aspect-[3/4] w-full overflow-hidden bg-[#EDE6DA] mb-8 relative border border-black/5">
+                  <img
+                    src={feat.image}
+                    alt={`GRATIVA Difference — ${feat.title}`}
+                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  />
+                  {/* Subtle Elegant Gold Corner Overlay */}
+                  <div className="absolute inset-0 border border-transparent group-hover:border-[#C9A96E]/20 transition-colors duration-700 pointer-events-none" />
+                  
+                  {/* Luxury tracked number accent */}
+                  <div className="absolute top-4 left-4 bg-[#FAF8F4]/90 backdrop-blur-sm text-[#C9A96E] text-[10px] tracking-[0.25em] font-medium px-3 py-1 border border-black/5" style={R}>
+                    0{i + 1}
+                  </div>
+                </div>
+
+                {/* Typography Block */}
+                <div className="flex-grow flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl text-[#1A1714] font-normal mb-3 transition-colors duration-300 group-hover:text-[#C9A96E]" style={F}>
+                      {feat.title}
+                    </h3>
+                    {/* Subtle sliding gold accent line */}
+                    <div className="h-[1px] w-8 bg-[#C9A96E]/40 mb-4 group-hover:w-16 group-hover:bg-[#C9A96E] transition-all duration-500" />
+                    <p className="text-[13px] text-[#8C7E6E] leading-[1.85] font-light" style={{ ...D, fontWeight: 300 }}>
+                      {feat.desc}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </FadeIn>
-        ))}
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -911,7 +905,7 @@ function CraftsmanshipSection() {
 // ─── MARQUEE BAR ─────────────────────────────────────────────────────────────
 
 function MarqueeBar() {
-  const items = ["Free Shipping Over ₹5,000", "Complimentary Dust Bag", "30-Day Returns", "Handcrafted In India", "Lifetime Leather Care"];
+  const items = ["Free Shipping Over ₹5,000", "Complimentary Dust Bag", "30-Day Returns", "Handcrafted In India", "Signature Experience"];
   return (
     <div className="bg-[#1A1714] py-3.5 overflow-hidden">
       <div className="flex" style={{ animation: "marquee 28s linear infinite" }}>
@@ -932,64 +926,27 @@ function MarqueeBar() {
   );
 }
 
-// ─── TESTIMONIALS + INSTAGRAM ────────────────────────────────────────────────
+// ─── INSTAGRAM GALLERY ───────────────────────────────────────────────────────
 
-function TestimonialsSection() {
+function InstagramSection() {
   return (
-    <section className="py-24 md:py-32 bg-[#F5EFE6]">
+    <section className="py-24 md:py-32 bg-[#FAF8F4] border-t border-black/5">
       <div className="px-6 lg:px-10 max-w-[1400px] mx-auto">
-        <FadeIn className="text-center mb-16">
-          <Label>Client Stories</Label>
-          <h2 className="text-[clamp(2rem,4vw,3.5rem)] text-[#1A1714]" style={F}>Words From Our Women</h2>
+        <FadeIn className="text-center mb-10">
+          <Label>@grativaofficial</Label>
+          <h3 className="text-2xl text-[#1A1714]" style={F}>Join the Community</h3>
         </FadeIn>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-          {TESTIMONIALS.map((t, i) => (
-            <FadeIn key={t.id} delay={i * 0.12}>
-              <div className="bg-white p-8 md:p-10 flex flex-col h-full">
-                <div className="flex gap-1 mb-7">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} size={11} className="fill-[#C9A96E] text-[#C9A96E]" />
-                  ))}
-                </div>
-                <blockquote
-                  className="flex-1 text-[#1A1714] text-sm leading-[1.9] mb-8"
-                  style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
-                >
-                  "{t.text}"
-                </blockquote>
-                <div className="flex items-center gap-4 pt-6 border-t border-black/6">
-                  <div className="w-10 h-10 rounded-full overflow-hidden bg-[#EDE6DA] flex-shrink-0 ring-1 ring-[#C9A96E]/20">
-                    <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-[#1A1714] tracking-wide" style={R}>{t.name}</p>
-                    <p className="text-[11px] text-[#8C7E6E] mt-0.5" style={D}>{t.location} · {t.product}</p>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-1.5">
+          {INSTAGRAM_PHOTOS.map((url, i) => (
+            <div key={i} className="aspect-square overflow-hidden bg-[#EDE6DA] cursor-pointer group">
+              <img
+                src={url}
+                alt={`GRATIVA community — style inspiration ${i + 1}`}
+                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-90"
+              />
+            </div>
           ))}
         </div>
-
-        {/* Instagram Gallery */}
-        <FadeIn className="mt-20" delay={0.2}>
-          <div className="text-center mb-8">
-            <Label>@vella.official</Label>
-            <h3 className="text-2xl text-[#1A1714]" style={F}>Join the Community</h3>
-          </div>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-1.5">
-            {INSTAGRAM_PHOTOS.map((url, i) => (
-              <div key={i} className="aspect-square overflow-hidden bg-[#EDE6DA] cursor-pointer group">
-                <img
-                  src={url}
-                  alt={`VELLA community — style inspiration ${i + 1}`}
-                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-90"
-                />
-              </div>
-            ))}
-          </div>
-        </FadeIn>
       </div>
     </section>
   );
@@ -1002,10 +959,10 @@ function ComingSoonSection() {
     <section className="py-24 md:py-32 bg-[#1A1714] text-white">
       <div className="px-6 lg:px-10 max-w-[1400px] mx-auto">
         <FadeIn className="text-center mb-16">
-          <Label>The VELLA Universe</Label>
+          <Label>The GRATIVA Universe</Label>
           <h2 className="text-[clamp(2rem,4vw,3.5rem)] text-white" style={F}>Coming Soon</h2>
           <p className="mt-5 text-white/45 text-sm max-w-xs mx-auto leading-[1.8]" style={{ ...D, fontWeight: 300 }}>
-            New categories, new expressions. The VELLA world is expanding.
+            New categories, new expressions. The GRATIVA world is expanding.
           </p>
         </FadeIn>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
@@ -1014,7 +971,7 @@ function ComingSoonSection() {
               <div className="group relative overflow-hidden bg-[#2A2420] aspect-[3/4] cursor-pointer">
                 <img
                   src={cat.image}
-                  alt={`VELLA ${cat.name} — coming soon`}
+                  alt={`GRATIVA ${cat.name} — coming soon`}
                   className="w-full h-full object-cover opacity-45 group-hover:opacity-65 transition-all duration-700 group-hover:scale-107"
                   style={{ transform: "scale(1.0)", transition: "opacity 0.7s, transform 0.7s" }}
                   onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.07)")}
@@ -1053,7 +1010,7 @@ function PrivateClubSection() {
     { Icon: Clock, label: "Early Access", desc: "Shop new releases 48 hours before anyone else." },
     { Icon: Crown, label: "Limited Releases", desc: "Exclusive access to limited-edition pieces and colorways." },
     { Icon: Tag, label: "VIP Pricing", desc: "Members-only pricing on select collections." },
-    { Icon: Sparkles, label: "Private Events", desc: "Invitations to VELLA launch previews and private exhibitions." },
+    { Icon: Sparkles, label: "Private Events", desc: "Invitations to GRATIVA launch previews and private exhibitions." },
   ];
 
   return (
@@ -1071,7 +1028,7 @@ function PrivateClubSection() {
               <div className="h-px w-8 bg-[#C9A96E]" />
             </div>
             <h2 className="text-[clamp(2.25rem,5vw,4.5rem)] text-[#1A1714] leading-[1.05] mb-6" style={F}>
-              VELLA Private Club
+              GRATIVA Privé
             </h2>
             <p className="text-[#8C7E6E] text-sm md:text-base leading-[1.9] max-w-lg mx-auto mb-14" style={{ ...D, fontWeight: 300 }}>
               A membership crafted for women who live with intention, elegance, and quiet power. More than access — a way of being.
@@ -1105,7 +1062,7 @@ function PrivateClubSection() {
                 >
                   <Check size={22} strokeWidth={2} className="text-white" />
                 </motion.div>
-                <p className="text-xl text-[#1A1714]" style={F}>Welcome to VELLA Private Club</p>
+                <p className="text-xl text-[#1A1714]" style={F}>Welcome to GRATIVA Privé</p>
                 <p className="text-xs text-[#8C7E6E] tracking-wide" style={D}>Your invitation details will arrive shortly.</p>
               </div>
             ) : (
@@ -1150,7 +1107,7 @@ function NewsletterSection() {
         <FadeIn>
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
-              <h3 className="text-2xl md:text-3xl text-[#1A1714]" style={F}>The VELLA Edit</h3>
+              <h3 className="text-2xl md:text-3xl text-[#1A1714]" style={F}>The GRATIVA Edit</h3>
               <p className="text-[#8C7E6E] text-sm mt-2" style={{ ...D, fontWeight: 300 }}>
                 Curated stories, styling notes, and early access. No noise.
               </p>
@@ -1195,13 +1152,13 @@ function Footer({ onAdminAccess }: { onAdminAccess: () => void }) {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-16 pb-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
           <div className="col-span-2 md:col-span-1">
-            <p className="text-white text-[28px] tracking-[0.35em] mb-5 font-normal" style={F}>VELLA</p>
+            <p className="text-white text-[28px] tracking-[0.35em] mb-5 font-normal" style={F}>GRATIVA</p>
             <p className="text-sm leading-[1.85] mb-6" style={{ ...D, fontWeight: 300 }}>
               Luxury women's accessories crafted with intention. Born in Mumbai.
             </p>
             <div className="flex items-center gap-2 text-xs mb-3">
               <Mail size={11} strokeWidth={1.5} />
-              <span style={D}>hello@vella.in</span>
+              <span style={D}>hello@grativa.in</span>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <MapPin size={11} strokeWidth={1.5} />
@@ -1212,7 +1169,7 @@ function Footer({ onAdminAccess }: { onAdminAccess: () => void }) {
           {[
             { heading: "Shop", links: ["Handbags", "New Arrivals", "Bestsellers", "Gift Cards"] },
             { heading: "Help", links: ["Size Guide", "Care Instructions", "Returns & Exchanges", "FAQs"] },
-            { heading: "VELLA", links: ["About Us", "Journal", "Careers", "Press & Media"] },
+            { heading: "GRATIVA", links: ["About Us", "Journal", "Careers", "Press & Media"] },
           ].map((col) => (
             <div key={col.heading}>
               <p className="text-white text-[10px] tracking-[0.28em] uppercase mb-6" style={R}>{col.heading}</p>
@@ -1228,7 +1185,7 @@ function Footer({ onAdminAccess }: { onAdminAccess: () => void }) {
         </div>
 
         <div className="border-t border-white/6 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-          <p style={D}>© 2024 VELLA. All rights reserved.</p>
+          <p style={D}>© 2024 GRATIVA. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <a href="#" className="hover:text-[#C9A96E] transition-colors" style={D}>Privacy Policy</a>
             <a href="#" className="hover:text-[#C9A96E] transition-colors" style={D}>Terms of Service</a>
@@ -1266,7 +1223,6 @@ function AdminDashboard({ onExit }: { onExit: () => void }) {
     { id: "customers", label: "Customers", Icon: Users },
     { id: "banners", label: "Banners", Icon: Image },
     { id: "collections", label: "Collections", Icon: Layers },
-    { id: "testimonials", label: "Testimonials", Icon: Award },
     { id: "offers", label: "Offers", Icon: Tag },
     { id: "coming-soon", label: "Coming Soon", Icon: Clock },
   ];
@@ -1337,8 +1293,8 @@ function AdminDashboard({ onExit }: { onExit: () => void }) {
       {/* Sidebar */}
       <aside className="w-56 bg-[#1A1714] flex flex-col flex-shrink-0 overflow-y-auto">
         <div className="px-5 py-5 border-b border-white/8">
-          <p className="text-white text-xl tracking-[0.25em]" style={F}>VELLA</p>
-          <p className="text-white/25 text-[9px] tracking-[0.25em] uppercase mt-1" style={R}>Admin Panel</p>
+          <p className="text-white text-xl tracking-[0.25em]" style={F}>GRATIVA</p>
+          <p className="text-white/25 text-[9px] tracking-[0.25em] uppercase mt-1" style={R}>Admin</p>
         </div>
         <nav className="flex-1 py-3 px-2.5">
           {navItems.map(({ id, label, Icon: NavIcon }) => (
@@ -1660,7 +1616,6 @@ function AdminDashboard({ onExit }: { onExit: () => void }) {
 
           {section === "banners" && <SimpleMgmtView title="Banners" Icon={Image} />}
           {section === "collections" && <SimpleMgmtView title="Collections" Icon={Layers} />}
-          {section === "testimonials" && <SimpleMgmtView title="Testimonials" Icon={Award} />}
           {section === "offers" && <SimpleMgmtView title="Offers" Icon={Tag} />}
           {section === "coming-soon" && <SimpleMgmtView title="Coming Soon" Icon={Clock} />}
         </div>
@@ -1723,8 +1678,8 @@ export default function App() {
           <CollectionSection onQuickView={setQuickViewProduct} onAddToCart={addToCart} />
         </div>
         <BrandStorySection />
-        <CraftsmanshipSection />
-        <TestimonialsSection />
+        <GrativaDifferenceSection />
+        <InstagramSection />
         <ComingSoonSection />
         <PrivateClubSection />
         <NewsletterSection />

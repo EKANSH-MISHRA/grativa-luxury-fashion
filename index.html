@@ -1,22 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>GRATIVA | Premium Handbags & Fashion Accessories</title>
+    <meta name="description" content="Discover GRATIVA — premium handbags, fashion accessories, and modern luxury designed for women who appreciate elegance and timeless style." />
+    <meta name="keywords" content="GRATIVA, GRATIVA Bags, GRATIVA Handbags, GRATIVA Collection, GRATIVA Fashion, GRATIVA Accessories, GRATIVA India, Premium Handbags India, Luxury Handbags India, Women's Fashion Accessories, Designer Bags India, Affordable Luxury Fashion" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://grativa.in/" />
+    <meta property="og:title" content="GRATIVA | Premium Handbags & Fashion Accessories" />
+    <meta property="og:description" content="Discover GRATIVA — premium handbags, fashion accessories, and modern luxury designed for women who appreciate elegance and timeless style." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1630484179057-75e24310e2ff?w=1200&h=630&fit=crop&auto=format" />
+    <meta property="og:site_name" content="GRATIVA" />
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Luxury Fashion E-Commerce Website</title>
-      <meta name="description" content="Experience luxury shopping with VELLA, a premium e-commerce platform offering exquisite women&#39;s handbags and exclusive collections for discerning fashion enthusiasts." />
-      <meta name="robots" content="noindex, nofollow" />
-      <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
-      
-    </head>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://grativa.in/" />
+    <meta property="twitter:title" content="GRATIVA | Premium Handbags & Fashion Accessories" />
+    <meta property="twitter:description" content="Discover GRATIVA — premium handbags, fashion accessories, and modern luxury designed for women who appreciate elegance and timeless style." />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1630484179057-75e24310e2ff?w=1200&h=630&fit=crop&auto=format" />
 
-    <body>
-      
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-      
-    </body>
-  </html>
-  
+    <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://grativa.in/#organization",
+          "name": "GRATIVA",
+          "url": "https://grativa.in",
+          "logo": "https://grativa.in/logo.png",
+          "email": "hello@grativa.in",
+          "sameAs": [
+            "https://instagram.com/grativaofficial"
+          ]
+        },
+        {
+          "@type": "Brand",
+          "@id": "https://grativa.in/#brand",
+          "name": "GRATIVA",
+          "logo": "https://grativa.in/logo.png",
+          "description": "Discover GRATIVA — premium handbags, fashion accessories, and modern luxury designed for women who appreciate elegance and timeless style."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://grativa.in/#website",
+          "url": "https://grativa.in",
+          "name": "GRATIVA",
+          "publisher": {
+            "@id": "https://grativa.in/#organization"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "The Signature Tote",
+          "image": "https://images.unsplash.com/photo-1630484179057-75e24310e2ff?w=600&h=800&fit=crop&auto=format",
+          "description": "Handcrafted to elevate your everyday presence. One iconic silhouette. Four expressions of quiet luxury.",
+          "brand": {
+            "@id": "https://grativa.in/#brand"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "INR",
+            "lowPrice": "34500",
+            "highPrice": "34500",
+            "offerCount": "4",
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Mocha Brown",
+                "price": "34500",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock",
+                "url": "https://grativa.in#collection"
+              },
+              {
+                "@type": "Offer",
+                "name": "Ivory White",
+                "price": "34500",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock",
+                "url": "https://grativa.in#collection"
+              },
+              {
+                "@type": "Offer",
+                "name": "Blush Pink",
+                "price": "34500",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock",
+                "url": "https://grativa.in#collection"
+              },
+              {
+                "@type": "Offer",
+                "name": "Midnight Black",
+                "price": "34500",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock",
+                "url": "https://grativa.in#collection"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://grativa.in/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://grativa.in"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Signature Collection",
+              "item": "https://grativa.in#collection"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is GRATIVA's design philosophy?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "GRATIVA is designed for modern women who appreciate quiet luxury, timeless style, and effortless sophistication. Our collections are released in limited drops to maintain exclusivity."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where can I purchase GRATIVA accessories?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our exclusive collections are available on our official website, grativa.in, and through select private showings."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
